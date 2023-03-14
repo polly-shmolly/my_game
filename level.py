@@ -5,6 +5,7 @@ from settings import tile_size, screen_height, screen_width
 from particles import ParticleEffect
 from support import import_csv_layout, import_cut_graphics
 from enemy import Enemy
+from decoration import Sky, Water, Clouds
 
 
 class Level:
@@ -56,6 +57,12 @@ class Level:
         # constraint
         constraint_layout = import_csv_layout(level_data['constraints'])
         self.constraint_sprites = self.create_tile_group(constraint_layout, 'constraints')
+
+        # decoration
+        self.sky = Sky(5)
+        level_width = len(terrain_layout[0]) * tile_size
+        self.water = Water(screen_height - 15, level_width)
+        self.clouds = Clouds(350, level_width, 20)
 
     def create_tile_group(self, layout, tile_type):
         sprite_group = pygame.sprite.Group()
@@ -196,6 +203,10 @@ class Level:
 
     def run(self):
 
+        # sky
+        self.sky.draw(self.display_surface)
+        self.clouds.draw(self.display_surface, self.world_shift)
+
         # dust particles
         self.dust_sprite.update(self.world_shift)
         self.dust_sprite.draw(self.display_surface)
@@ -238,6 +249,9 @@ class Level:
         # player sprites
         self.goal.update(self.world_shift)
         self.goal.draw(self.display_surface)
+
+        # water
+        self.water.draw(self.display_surface, self.world_shift)
 
         # player
         self.player.update()
