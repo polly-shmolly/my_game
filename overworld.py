@@ -35,7 +35,6 @@ class Icon(pygame.sprite.Sprite):
         self.rect.center = self.pos
 
 
-
 class Overworld:
     def __init__(self, start_level, max_level, surface):
         """
@@ -77,7 +76,7 @@ class Overworld:
 
     def setup_icon(self):
         self.icon = pygame.sprite.GroupSingle()
-        icon_sprite = Icon(self.nodes.sprites()[self.current_level])
+        icon_sprite = Icon(self.nodes.sprites()[self.current_level].rect.center)
         self.icon.add(icon_sprite)
 
     def input(self):
