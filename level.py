@@ -11,6 +11,13 @@ from game_data import levels
 
 class Level:
 	def __init__(self, current_level, surface, create_overworld, change_coins, change_health):
+		"""
+		:param current_level: current level
+		:param surface: display surface (screen)
+		:param create_overworld: create overworld form
+		:param change_coins: coins
+		:param change_health: health
+		"""
 		# general setup
 		self.display_surface = surface
 		self.world_shift = 0
@@ -81,6 +88,12 @@ class Level:
 		self.clouds = Clouds(400, level_width, 30)
 
 	def create_tile_group(self, layout, tile_type):
+		"""
+		creation map from tiles
+		:param layout: layout
+		:param tile_type: type of tile (terrain, grass ..)
+		:return: map
+		"""
 		sprite_group = pygame.sprite.Group()
 
 		for row_index, row in enumerate(layout):

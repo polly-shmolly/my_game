@@ -3,17 +3,22 @@ from decoration import Sky
 
 
 class Registration:
-    def __init__(self, screen):
-        self.base_font = pygame.font.Font('graphics/ui/ARCADEPI.TTF', 30)
+    def __init__(self, surface):
+        """
+        :param surface: display surface
+        """
+
+        # user
         self.user_text = 'user1'
         self.text_before = 'Enter your username:'
 
-        self.input_rect = pygame.Rect(200, 310, 300, 50)
+        # setup
+        self.input_rect = pygame.Rect(200, 310, 300, 40)
         self.box_color = pygame.Color('#b86574')
         self.user_text_color = pygame.Color('#9c4857')
         self.text_before_color = pygame.Color('#394c5f')
-
-        self.screen = screen
+        self.surface = surface
+        self.base_font = pygame.font.Font('graphics/ui/ARCADEPI.TTF', 30)
         self.sky = Sky(8, 'overworld')
 
     def input_text(self):
@@ -28,21 +33,30 @@ class Registration:
 
     def text_surf(self, text, txt_color, x, y):
         text_surface = self.base_font.render(text, True, txt_color)
-        self.screen.blit(text_surface, (self.input_rect.x + x, self.input_rect.y + y))
+        self.surface.blit(text_surface, (self.input_rect.x + x, self.input_rect.y + y))
 
     def run(self):
-        self.sky.draw(self.screen)
-        pygame.draw.rect(self.screen, self.box_color, self.input_rect, 2, border_radius=12)
+        self.sky.draw(self.surface)
+        pygame.draw.rect(self.surface, self.box_color, self.input_rect, 2, border_radius=12)
         self.input_text()
         self.text_surf(self.text_before, self.text_before_color, 0, -37)
         self.text_surf(self.user_text, self.user_text_color, 5, 5)
 
 
 class Button:
-    def __init__(self, text, width, height, pos, elevation, screen, create_overworld):
+    def __init__(self, text, width, height, pos, elevation, surface, create_overworld):
+        """
+        :param text: text on button
+        :param width: button width
+        :param height: button height
+        :param pos: button position
+        :param elevation: high of button press
+        :param surface: display surface
+        :param create_overworld: create overworld form
+        """
 
         gui_font = pygame.font.Font('graphics/ui/ARCADEPI.TTF', 30)
-        self.screen = screen
+        self.surface = surface
         self.create_overworld = create_overworld
 
         # core attributes
@@ -71,9 +85,9 @@ class Button:
         self.bottom_rect.midtop = self.top_rect.midtop
         self.bottom_rect.height = self.top_rect.height + self.dynamic_elevation
 
-        pygame.draw.rect(self.screen, self.bottom_color, self.bottom_rect, border_radius=12)
-        pygame.draw.rect(self.screen, self.top_color, self.top_rect, border_radius=12)
-        self.screen.blit(self.text_surf, self.text_rect)
+        pygame.draw.rect(self.surface, self.bottom_color, self.bottom_rect, border_radius=12)
+        pygame.draw.rect(self.surface, self.top_color, self.top_rect, border_radius=12)
+        self.surface.blit(self.text_surf, self.text_rect)
         self.check_click()
 
     def check_click(self):

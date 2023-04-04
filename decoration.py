@@ -7,6 +7,10 @@ from random import choice, randint
 
 class Sky:
 	def __init__(self, horizon, style='level'):
+		"""
+		:param horizon: when horizon start
+		:param style: status
+		"""
 		self.top = pygame.image.load('graphics/decoration/sky/sky_top.png').convert()
 		self.bottom = pygame.image.load('graphics/decoration/sky/sky_bottom.png').convert()
 		self.middle = pygame.image.load('graphics/decoration/sky/sky_middle.png').convert()
@@ -56,6 +60,10 @@ class Sky:
 
 class Water:
 	def __init__(self, top, level_width):
+		"""
+		:param top: when water ends (y)
+		:param level_width: width of the level
+		"""
 		water_start = -screen_width
 		water_tile_width = 192
 		tile_x_amount = int((level_width + screen_width * 2) / water_tile_width)
@@ -74,6 +82,11 @@ class Water:
 
 class Clouds:
 	def __init__(self, horizon, level_width, cloud_number):
+		"""
+		:param horizon: when horizon starts
+		:param level_width: width of the level
+		:param cloud_number: amount of the clouds
+		"""
 		cloud_surf_list = import_folder('graphics/decoration/clouds')
 		min_x = -screen_width
 		max_x = level_width + screen_width

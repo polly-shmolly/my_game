@@ -4,11 +4,13 @@ from settings import *
 from level import Level
 from overworld import Overworld
 from ui import UI
-
 from registration import Registration, Button
 
 
 class Game:
+	"""
+	game logic
+	"""
 	def __init__(self):
 
 		# game attributes
