@@ -5,6 +5,12 @@ import math
 
 class Player(pygame.sprite.Sprite):
 	def __init__(self, pos, surface, create_jump_particles, change_health):
+		"""
+		:param pos: start position
+		:param surface: display surface
+		:param create_jump_particles: creation of the jump particles
+		:param change_health: health
+		"""
 		super().__init__()
 		self.import_character_assets()
 		self.frame_index = 0

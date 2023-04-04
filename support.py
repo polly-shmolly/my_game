@@ -5,6 +5,7 @@ import pygame
 
 
 def import_folder(path):
+	"""list of images"""
 	surface_list = []
 
 	for _,__,image_files in walk(path):
@@ -17,6 +18,7 @@ def import_folder(path):
 
 
 def import_csv_layout(path):
+	"""information from csv files in list"""
 	terrain_map = []
 	with open(path) as my_map:
 		level = reader(my_map, delimiter=',')
