@@ -1,9 +1,11 @@
 import pygame
 import sys
-from settings import * 
+from settings import *
 from level import Level
 from overworld import Overworld
 from ui import UI
+
+from registration import Registration, Button
 
 
 class Game:
@@ -19,10 +21,11 @@ class Game:
 		self.level_bg_music = pygame.mixer.Sound('audio/level_music.wav')
 		self.overworld_bg_music = pygame.mixer.Sound('audio/overworld_music.wav')
 
-		# overworld creations
-		self.overworld = Overworld(0, self.max_level, screen, self.create_level)
-		self.status = 'overworld'
-		self.overworld_bg_music.play(loops=-1)
+		# registration creations
+		self.registration = Registration(screen)
+		self.button1 = Button('Start game', 300, 60, (700, 300), 6, screen, self.create_overworld)
+		self.status = 'registration'
+		self.level_bg_music.play(loops=-1)
 
 		# user interface
 		self.ui = UI(screen)
@@ -58,14 +61,16 @@ class Game:
 			self.overworld_bg_music.play(loops=-1)
 
 	def run(self):
+		if self.status == 'registration':
+			self.registration.run()
+			self.button1.draw()
 		if self.status == 'overworld':
 			self.overworld.run()
-		else:
+		if self.status == 'level':
 			self.level.run()
 			self.ui.show_health(self.cur_health, self.max_health)
 			self.ui.show_coins(self.coins)
 			self.check_game_over()
-
 
 # Pygame setup
 pygame.init()
