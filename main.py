@@ -5,6 +5,7 @@ from level import Level
 from overworld import Overworld
 from ui import UI
 from registration import Registration, Button
+from support import save_high_score
 
 
 class Game:
@@ -79,10 +80,13 @@ pygame.init()
 screen = pygame.display.set_mode((screen_width, screen_height))
 clock = pygame.time.Clock()
 game = Game()
+registration = Registration(screen)
+pygame.display.set_caption("my_game")
 
 while True:
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
+			save_high_score(registration.user_text, game.coins)
 			pygame.quit()
 			sys.exit()
 	
