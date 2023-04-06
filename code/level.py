@@ -11,14 +11,21 @@ from game_data import levels
 
 class Level:
 	def __init__(self, current_level, surface, create_overworld, change_coins, change_health):
+		"""
+		:param current_level: current level
+		:param surface: display surface (screen)
+		:param create_overworld: create overworld form
+		:param change_coins: coins
+		:param change_health: health
+		"""
 		# general setup
 		self.display_surface = surface
 		self.world_shift = 0
 		self.current_x = None
 
 		# audio
-		self.coin_sound = pygame.mixer.Sound('audio/effects/coin.wav')
-		self.stomp_sound = pygame.mixer.Sound('audio/effects/stomp.wav')
+		self.coin_sound = pygame.mixer.Sound('../audio/effects/coin.wav')
+		self.stomp_sound = pygame.mixer.Sound('../audio/effects/stomp.wav')
 
 		# overworld connection
 		self.create_overworld = create_overworld
@@ -81,6 +88,12 @@ class Level:
 		self.clouds = Clouds(400, level_width, 30)
 
 	def create_tile_group(self, layout, tile_type):
+		"""
+		creation map from tiles
+		:param layout: layout
+		:param tile_type: type of tile (terrain, grass ..)
+		:return: map
+		"""
 		sprite_group = pygame.sprite.Group()
 
 		for row_index, row in enumerate(layout):
@@ -90,12 +103,12 @@ class Level:
 					y = row_index * tile_size
 
 					if tile_type == 'terrain':
-						terrain_tile_list = import_cut_graphics('graphics/terrain/terrain_tiles.png')
+						terrain_tile_list = import_cut_graphics('../graphics/terrain/terrain_tiles.png')
 						tile_surface = terrain_tile_list[int(val)]
 						sprite = StaticTile(tile_size, x, y, tile_surface)
 						
 					if tile_type == 'grass':
-						grass_tile_list = import_cut_graphics('graphics/decoration/grass/grass.png')
+						grass_tile_list = import_cut_graphics('../graphics/decoration/grass/grass.png')
 						tile_surface = grass_tile_list[int(val)]
 						sprite = StaticTile(tile_size, x, y, tile_surface)
 					
@@ -104,18 +117,18 @@ class Level:
 
 					if tile_type == 'coins':
 						if val == '0':
-							sprite = Coin(tile_size, x, y, 'graphics/coins/gold', 5)
+							sprite = Coin(tile_size, x, y, '../graphics/coins/gold', 5)
 						if val == '1':
-							sprite = Coin(tile_size, x, y, 'graphics/coins/silver', 1)
+							sprite = Coin(tile_size, x, y, '../graphics/coins/silver', 1)
 
 					if tile_type == 'fg palms':
 						if val == '0':
-							sprite = Palm(tile_size, x, y, 'graphics/terrain/palm_small', 38)
+							sprite = Palm(tile_size, x, y, '../graphics/terrain/palm_small', 38)
 						if val == '1':
-							sprite = Palm(tile_size, x, y, 'graphics/terrain/palm_large', 64)
+							sprite = Palm(tile_size, x, y, '../graphics/terrain/palm_large', 64)
 
 					if tile_type == 'bg palms':
-						sprite = Palm(tile_size, x, y, 'graphics/terrain/palm_bg', 64)
+						sprite = Palm(tile_size, x, y, '../graphics/terrain/palm_bg', 64)
 
 					if tile_type == 'enemies':
 						sprite = Enemy(tile_size, x, y)
@@ -136,7 +149,7 @@ class Level:
 					sprite = Player((x, y), self.display_surface, self.create_jump_particles, change_health)
 					self.player.add(sprite)
 				if val == '1':
-					hat_surface = pygame.image.load('graphics/character/hat.png').convert_alpha()
+					hat_surface = pygame.image.load('../graphics/character/hat.png').convert_alpha()
 					sprite = StaticTile(tile_size, x, y, hat_surface)
 					self.goal.add(sprite)
 

@@ -5,6 +5,7 @@ import pygame
 
 
 def import_folder(path):
+	"""list of images"""
 	surface_list = []
 
 	for _,__,image_files in walk(path):
@@ -17,12 +18,31 @@ def import_folder(path):
 
 
 def import_csv_layout(path):
+	"""information from csv files in list"""
 	terrain_map = []
 	with open(path) as my_map:
 		level = reader(my_map, delimiter=',')
 		for row in level:
 			terrain_map.append(list(row))
 		return terrain_map
+
+
+def save_high_score(name, coin):
+	"""
+	:param name: user name
+	:param coin: amount of coins
+	:return: new high score
+	"""
+	with open('high_score.txt', 'r') as f:
+		data = f.readline()
+		coin_score = data.split(' ')[1]
+
+	if coin >= int(coin_score):
+		coin_score = coin
+		name_score = name
+		new_data = name_score + ' ' + str(coin_score)
+		with open('high_score.txt', 'w') as f:
+			f.write(new_data)
 
 
 def import_cut_graphics(path):
