@@ -10,7 +10,7 @@ class Enemy(AnimatedTile):
 		:param x: position x
 		:param y: position y
 		"""
-		super().__init__(size, x, y, 'graphics/enemy/run')
+		super().__init__(size, x, y, '../graphics/enemy/run')
 		self.rect.y += size - self.image.get_size()[1]
 		self.speed = randint(3, 5)
 
