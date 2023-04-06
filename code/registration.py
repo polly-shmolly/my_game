@@ -18,7 +18,7 @@ class Registration:
         self.user_text_color = pygame.Color('#9c4857')
         self.text_before_color = pygame.Color('#394c5f')
         self.surface = surface
-        self.base_font = pygame.font.Font('graphics/ui/ARCADEPI.TTF', 30)
+        self.base_font = pygame.font.Font('../graphics/ui/ARCADEPI.TTF', 30)
         self.sky = Sky(8, 'overworld')
 
     def input_text(self):
@@ -55,7 +55,7 @@ class Button:
         :param create_overworld: create overworld form
         """
 
-        gui_font = pygame.font.Font('graphics/ui/ARCADEPI.TTF', 30)
+        gui_font = pygame.font.Font('../graphics/ui/ARCADEPI.TTF', 30)
         self.surface = surface
         self.create_overworld = create_overworld
 

@@ -7,15 +7,14 @@ bot = Bot(token='6174127131:AAHACugqtwYOiLFQ-p4IAYjvUAUc0FIZQWE')
 dp = Dispatcher(bot)
 
 
-@dp.message_handler(commands=["start"])
+@dp.message_handler(commands=["start", "help"])
 async def start(message: types.Message):
-    mess = f"Hello, {message.from_user.first_name}"
-    await message.answer(mess, reply_markup=keyboard)
+    return await message.answer("Hello")
 
 
 @sync_to_async()
 def get_data():
-    with open('high_score.txt', 'r') as f:
+    with open('../code/high_score.txt', 'r') as f:
         data = f.readline()
     return data
 
@@ -35,7 +34,8 @@ keyboard = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=False)
 keyboard.add(button)
 
 
-executor.start_polling(dp)
+if __name__ == '__main__':
+    executor.start_polling(dp)
 
 
 
