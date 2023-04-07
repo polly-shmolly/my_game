@@ -30,6 +30,16 @@ pip install aiogram
 
 You should copy directory __bot__
 
+As well in _Telegram_ find bot with name __"BotFather"__. Then create new bot and give them name. "BotFather" send to you information in which you can find TOKEN.
+
+<img src="https://user-images.githubusercontent.com/60139477/230595987-d3eb4d1a-46c5-4cce-ae48-9142bcd1dcc5.jpg" width="400">
+
+Сreate a __.env__ file and add a variable named ___TOKEN___ to it and paste the value that "BotFather" sent you into this variable. Then write in terminal:
+
+`
+pip install  python-dotenv
+`
+
 To start bot you should write this code in terminal:
 
 `
