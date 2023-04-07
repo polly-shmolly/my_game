@@ -2,8 +2,13 @@ from aiogram import Bot, Dispatcher, types
 from aiogram.types import KeyboardButton, ReplyKeyboardMarkup
 from aiogram.utils import executor
 from asgiref.sync import sync_to_async
+import os
+from dotenv import load_dotenv, find_dotenv
 
-bot = Bot(token='6174127131:AAHACugqtwYOiLFQ-p4IAYjvUAUc0FIZQWE')
+load_dotenv(find_dotenv())
+
+
+bot = Bot(token=os.getenv('TOKEN'))
 dp = Dispatcher(bot)
 
 
