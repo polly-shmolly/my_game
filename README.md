@@ -33,6 +33,12 @@ You should copy directory __bot__
 To start bot you should write this code in terminal:
 
 `
+cd bot
+`
+
+And then this code (also in terminal):
+
+`
 python my_bot.py
 `
 
