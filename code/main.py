@@ -1,11 +1,11 @@
 import pygame
 import sys
-from settings import *
-from level import Level
-from overworld import Overworld
-from ui import UI
-from registration import Registration, Button
-from support import save_high_score
+from code.settings import *
+from code.level import Level
+from code.overworld import Overworld
+from code.ui import UI
+from code.registration import Registration, Button
+from code.support import save_high_score
 
 
 class Game:

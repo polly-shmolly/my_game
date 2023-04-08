@@ -1,13 +1,10 @@
-from code.support import import_folder
+from code.support import save_high_score
 
 
-def test_import_folder():
-    """return list"""
-    t_imp_folder = import_folder('graphics/character/idle')
-    t_list = t_imp_folder._aslist()
-
-    expected = ['1.png', '2.png', '3.png', '4.png', '5.png']
-
-    assert t_list == expected
+def test_save_high_score():
+    """:return data"""
+    t_save_data = save_high_score('polly', 5)
+    expected = 'polly 5'
+    assert t_save_data == expected
 
 
