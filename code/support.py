@@ -27,13 +27,14 @@ def import_csv_layout(path):
 		return terrain_map
 
 
-def save_high_score(name, coin):
+def save_high_score(name, coin, path_f='high_score.txt'):
 	"""
 	:param name: user name
+	:param path_f: path to file
 	:param coin: amount of coins
 	:return: new high score
 	"""
-	with open('code/high_score.txt', 'r') as f:
+	with open(path_f, 'r') as f:
 		data = f.readline()
 		coin_score = data.split(' ')[1]
 
