@@ -1,5 +1,5 @@
 from csv import reader
-from settings import tile_size
+from code.settings import tile_size
 from os import walk
 import pygame
 
@@ -8,7 +8,7 @@ def import_folder(path):
 	"""list of images"""
 	surface_list = []
 
-	for _,__,image_files in walk(path):
+	for _, __, image_files in walk(path):
 		for image in image_files:
 			full_path = path + '/' + image
 			image_surf = pygame.image.load(full_path).convert_alpha()
@@ -33,7 +33,7 @@ def save_high_score(name, coin):
 	:param coin: amount of coins
 	:return: new high score
 	"""
-	with open('high_score.txt', 'r') as f:
+	with open('code/high_score.txt', 'r') as f:
 		data = f.readline()
 		coin_score = data.split(' ')[1]
 
@@ -43,6 +43,8 @@ def save_high_score(name, coin):
 		new_data = name_score + ' ' + str(coin_score)
 		with open('high_score.txt', 'w') as f:
 			f.write(new_data)
+		return new_data
+	return data
 
 
 def import_cut_graphics(path):

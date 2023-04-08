@@ -1,5 +1,5 @@
 import pygame
-from decoration import Sky
+from code.decoration import Sky
 
 
 class Registration:

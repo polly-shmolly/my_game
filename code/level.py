@@ -1,12 +1,12 @@
 import pygame 
-from support import import_csv_layout, import_cut_graphics
-from settings import tile_size, screen_height, screen_width
-from tiles import Tile, StaticTile, Crate, Coin, Palm
-from enemy import Enemy
-from decoration import Sky, Water, Clouds
-from player import Player
-from particles import ParticleEffect
-from game_data import levels
+from code.support import import_csv_layout, import_cut_graphics
+from code.settings import tile_size, screen_height, screen_width
+from code.tiles import Tile, StaticTile, Crate, Coin, Palm
+from code.enemy import Enemy
+from code.decoration import Sky, Water, Clouds
+from code.player import Player
+from code.particles import ParticleEffect
+from code.game_data import levels
 
 
 class Level:
